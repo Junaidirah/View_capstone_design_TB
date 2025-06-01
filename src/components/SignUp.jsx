@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; // Import Link
+import { useNavigate, Link } from 'react-router-dom';
 import '../styles/SignUp.css';
 
 export default function SignUp() {
@@ -10,11 +10,6 @@ export default function SignUp() {
     password: '',
     first_name: '',
     last_name: '',
-    phone: '',
-    image: '',
-    agency: '',
-    job: '',
-    address: '',
     gender: '',
   });
   const [message, setMessage] = useState('');
@@ -30,7 +25,14 @@ export default function SignUp() {
     setMessage('');
     setLoading(true);
 
-    if (!formData.email || !formData.password || !formData.first_name || !formData.last_name || !formData.gender) {
+    // Validasi wajib
+    if (
+      !formData.first_name ||
+      !formData.last_name ||
+      !formData.email ||
+      !formData.password ||
+      !formData.gender
+    ) {
       setMessage('Please fill all required fields.');
       setLoading(false);
       return;
@@ -41,16 +43,11 @@ export default function SignUp() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          email: formData.email,
-          password: formData.password,
           first_name: formData.first_name,
           last_name: formData.last_name,
-          phone: formData.phone,
-          image: formData.image,
-          agency: formData.agency,
-          job: formData.job,
-          address: formData.address,
-          gender: formData.gender === 'male',
+          email: formData.email,
+          password: formData.password,
+          gender: formData.gender === 'male', // kirim boolean sesuai requirement API
         }),
       });
 
@@ -60,20 +57,9 @@ export default function SignUp() {
         setMessage(data.message || 'Registration failed.');
       } else {
         setMessage('Registration successful! Redirecting to login...');
-        setFormData({
-          email: '',
-          password: '',
-          first_name: '',
-          last_name: '',
-          phone: '',
-          image: '',
-          agency: '',
-          job: '',
-          address: '',
-          gender: '',
-        });
+        setFormData({ email: '', password: '', first_name: '', last_name: '', gender: '' });
         setTimeout(() => {
-          navigate('/'); // Redirect ke halaman login
+          navigate('/signin'); // Redirect ke halaman login
         }, 1500);
       }
     } catch (error) {
@@ -111,6 +97,7 @@ export default function SignUp() {
                 required
               />
             </div>
+
             <div className="input-group">
               <label htmlFor="last_name">Last name *</label>
               <input
@@ -148,15 +135,31 @@ export default function SignUp() {
             minLength={6}
           />
 
-          <div className="checkbox-group">
-            <input
-              type="checkbox"
-              id="terms"
-              name="terms"
-              required
-              defaultChecked
-            />
-            <label htmlFor="terms">I agree with the Terms & Conditions</label>
+          <div className="gender-options">
+            <label htmlFor="genderMale">
+              <input
+                type="radio"
+                id="genderMale"
+                name="gender"
+                value="male"
+                checked={formData.gender === 'male'}
+                onChange={handleChange}
+                required
+              />
+              Male
+            </label>
+
+            <label htmlFor="genderFemale">
+              <input
+                type="radio"
+                id="genderFemale"
+                name="gender"
+                value="female"
+                checked={formData.gender === 'female'}
+                onChange={handleChange}
+              />
+              Female
+            </label>
           </div>
 
           <button
@@ -175,7 +178,7 @@ export default function SignUp() {
           )}
 
           <p className="login-link">
-            Already have an account? <Link to="/signin">Sign In</Link> {/* pakai Link dari react-router-dom */}
+            Already have an account? <Link to="/signin">Sign In</Link>
           </p>
         </form>
       </div>

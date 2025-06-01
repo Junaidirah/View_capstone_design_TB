@@ -24,8 +24,8 @@ export default function Auth() {
       setMessage('Invalid email format.');
       return;
     }
-    if (password.length < 6) {
-      setMessage('Password must be at least 6 characters.');
+    if (password.length < 1) {
+      setMessage('Password must be at least 1 characters.');
       return;
     }
 
