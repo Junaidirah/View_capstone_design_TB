@@ -1,0 +1,251 @@
+/* Reset dan base */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5e6de;
+  color: #2b2b2b;
+  min-height: 100vh;
+}
+
+/* Container layout utama */
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  background: #f5e6de;
+}
+
+/* Sidebar kiri */
+.sidebar-left {
+  width: 180px;
+  background: #fff1f0;
+  border-radius: 20px;
+  margin: 15px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.05);
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 10px 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 10px;
+}
+
+.menu li.active, .menu li:hover {
+  background: #ff8c87;
+  color: white;
+  font-weight: 600;
+}
+
+.menu li svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Logout button */
+.logout {
+  padding: 10px 25px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #2b2b2b;
+}
+
+.logout:hover {
+  color: #ff8c87;
+}
+
+/* Konten utama */
+.main-content {
+  flex: 1;
+  margin: 15px 10px 15px 0;
+  border-radius: 20px;
+  background: #f3ded7;
+  padding: 25px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.search-bar {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+/* Notification bell */
+.bell {
+  background: white;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+/* Table styling */
+.dashboard-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 0.9rem;
+  table-layout: fixed;
+}
+
+.dashboard-table thead th {
+  text-align: left;
+  padding: 10px 12px;
+  font-weight: 700;
+}
+
+.dashboard-table tbody tr {
+  background: #f5ded7;
+  border-radius: 12px;
+}
+
+.dashboard-table tbody tr.highlight {
+  background: #d7c9d9;
+  box-shadow: 0 0 8px rgba(215, 201, 217, 0.7);
+}
+
+.dashboard-table tbody td {
+  padding: 10px 12px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Status badges */
+.status-badge {
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 60px;
+}
+
+.Emergency {
+  background: #ff7f7f;
+}
+
+.Critical {
+  background: #ffa500;
+}
+
+.Warning {
+  background: #fff176;
+  color: #555;
+}
+
+.Full {
+  background: #91c788;
+}
+
+/* Volume unit cell */
+td.volume-unit {
+  width: 30px;
+  color: #444;
+}
+
+/* Sidebar kanan */
+.sidebar-right {
+  width: 180px;
+  background: #fff1f0;
+  border-radius: 20px;
+  margin: 15px;
+  padding: 20px;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.05);
+  text-align: center;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 15px;
+}
+
+.profile-name {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media(max-width: 900px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .sidebar-left, .sidebar-right {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 0;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  .sidebar-right {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 12px;
+  }
+  .profile-img {
+    width: 50px;
+    height: 50px;
+    margin: 0;
+  }
+  .main-content {
+    margin: 10px 0;
+    border-radius: 0;
+    padding: 15px 20px;
+  }
+  table, thead, tbody, th, td, tr {
+    font-size: 0.8rem;
+  }
+}

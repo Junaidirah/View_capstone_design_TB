@@ -1,0 +1,172 @@
+/* Reset & base */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body, html {
+  margin: 0;
+  padding: 40px 0; /* Beri padding atas bawah lebih kecil */
+  height: auto;     /* biar gak selalu 100% */
+  width: 100vw;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f5e0d7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh; /* agar tetap minimal tinggi layar */
+}
+
+.signup-container {
+  display: flex;
+  width: 800px;
+  max-width: 80vw;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin-top: 20px;  /* atau margin 20px auto */
+  margin-bottom: 20px;
+}
+
+.left-side {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+}
+
+.left-side .logo {
+  max-width: 250px;
+  user-select: none;
+}
+
+.right-side {
+  flex: 1;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form h1 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.signup-form p {
+  margin: 0 0 30px;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+label {
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input[type="email"], input[type="password"],
+input[type="text"], input[type="tel"] {
+  padding: 15px 12px;
+  border-radius: 10px;
+  border: none;
+  background: #d3d3d3;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  outline: none;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+input[type="email"]:focus, input[type="password"]:focus,
+input[type="text"]:focus, input[type="tel"]:focus {
+  background: #c0c0c0;
+}
+
+.gender-options {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.gender-options label {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gender-options input[type="radio"] {
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+}
+
+.btn-submit {
+  padding: 15px 0;
+  border-radius: 10px;
+  border: none;
+  background: #ff7f7f;
+  font-size: 1rem;
+  font-weight: 600;
+  color: black;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #ff5c5c;
+}
+
+.btn-submit:disabled {
+  background: #fbbcbc;
+  cursor: not-allowed;
+}
+
+.form-message {
+  margin-top: 10px;
+  min-height: 20px;
+  font-weight: 600;
+  color: red;
+  text-align: center;
+}
+
+/* Responsive for small screen */
+@media (max-width: 700px) {
+  .signup-container {
+    flex-direction: column;
+    width: 90vw;
+    padding: 20px;
+  }
+
+  .left-side {
+    display: none;
+  }
+
+  .right-side {
+    padding: 0;
+  }
+
+  .signup-form h1 {
+    font-size: 1.7rem;
+  }
+
+  input[type="email"], input[type="password"], input[type="text"], input[type="tel"], .btn-submit {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+  }
+}
